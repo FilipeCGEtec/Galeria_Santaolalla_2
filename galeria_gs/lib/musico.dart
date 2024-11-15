@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:galeria_gs/Compositor.dart';
+import 'package:galeria_gs/classes/Compositor.dart';
 
 void main() {
   runApp(const MyApp());
@@ -52,7 +52,7 @@ class _MusicoState extends State<Musico> {
 
   @override
   Widget build(BuildContext context) {
-    
+    String texto = c.biografia;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(172, 0, 0, 0),
@@ -69,26 +69,42 @@ class _MusicoState extends State<Musico> {
       backgroundColor: const Color.fromARGB(255, 49, 49, 49),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             SizedBox(
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   ElevatedButton(
-                    onPressed: () {}, 
-                    child: Text('Botão')
+                    onPressed: () {
+                      setState(() {
+                        texto = c.biografia;
+                      });
+                    }, 
+                    child: Text('Botão', style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0)),)
                   ),
 
                   ElevatedButton(
-                    onPressed: () {}, 
+                    onPressed: () {
+                      setState(() {
+                        texto = c.premios[1];
+                      });
+                    }, 
                     child: Text('Botão 2')
                   )
                 ]
               )
             ),
-
+            SizedBox(
+              width: 500,
+              height: 800,
+              child: Image.network(
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUXjV1eBnFuuCPctCiZIVhDXwS1yv57HIkZg&s",
+              ),
+            ),
             SizedBox(
               child: Text(
-                c.biografia,
+                texto,
                 style: TextStyle(
                   color: Colors.white,
                 ),
